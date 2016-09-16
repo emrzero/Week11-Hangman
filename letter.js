@@ -1,32 +1,21 @@
-// control whether or not a letter appears as a "_" or as itself on-screen.
-exports.guesses = [];
-exports.strOutput = '';
-exports.arrDashes = [];
+// var myWord = "dolphin";
 
-exports.init = function(guesses, word){
-  var wArr = word.split('');
-  
-  for (i in wArr){
-    if (wArr[i] == ' '){
-      this.strOutput += ' ';
-      this.arrDashes.push(' ');
-    } else {
-      this.strOutput += '-';
-      this.arrDashes.push('-');
-    }
-    
+
+var LettersConstructor = function(myWord){
+  function Letter (l) {
+    this.char = l;
+    this.dash = true;
   }
 
-  // guesses.forEach(function(el){
-  //   if (wArr.indexOf(el)> -1){
-  //     //TO DO: Check for multiple occurrences of letter
-  //     //and return index of each occurrence
-  //     //push to strProgress
-  //     console.log(el + " " + wArr.indexOf(el));
-  //   }
-  // })
+  var myArr = [];
+
+  myWord.split('').forEach(function(el){
+    var ltr = new Letter(el);
+    myArr.push(ltr);
+  });
+
+  return myArr;
 }
 
-exports.progress = function () {
+module.exports = LettersConstructor;
 
-}

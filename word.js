@@ -1,14 +1,33 @@
-// contains all of the methods which will check the letters guessed versus the random word selected
-exports.check = function(guesses, word) {
-  //guessess should be an array
-  //word is in string format
-  var wArr = word.split('');
+var lc = require("./l.js");
 
-  guessess.forEach(function(el){
-    wArr.forEach(function(ltr){
-      if(guesses[el] == wArr[ltr]){
-        console.log(guesses[el] + ' ' + ltr);
+// console.log(lc("dolphin"));
+
+var wurd = function (word) {
+  var self = this;
+  this.word = word;
+  this.lets = lc(word);
+  this.strCombined = "";
+  this.found = false;
+  this.getLets = function() {
+    self.strCombined = "";
+    for (var i = 0; i < self.lets.length; i++) {
+      if (self[i].dash) {
+        self.strCombined += "_";
+      } else {
+        self.strCombined += self[i].char;
       }
-    });
-  });
+    }
+  }
+
+  this.didWeFindWord = function () {
+    self.found = (self.strCombined.indexOf("_") == -1);
+  }
+
+  this.letterFound = function (l) {
+    for (var i = 0; i < self.lets.length; i++) {
+      return l == self.lets[i].char;
+    }
+  }
 }
+
+module.exports = wurd;
