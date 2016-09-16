@@ -1,4 +1,4 @@
-var lc = require("./l.js");
+var lc = require("./letter.js");
 
 // console.log(lc("dolphin"));
 

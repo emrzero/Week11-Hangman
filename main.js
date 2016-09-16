@@ -12,6 +12,16 @@ function Game () {
       self.guessesRemaining = 6;
     }
 
-
   }
 }
+
+Game.prototype.getLetter = function() {
+  prompt.start();
+  prompt.get(['letter'], function(err, result) {
+    console.log(result.letter);
+  });
+}
+
+var myGame = new Game();
+
+myGame.getLetter();
